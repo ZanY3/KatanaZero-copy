@@ -18,7 +18,8 @@ public class TimeChangeManager : MonoBehaviour
     }
     private void Update()
     {
-        chargeText.text = "Time change times: " + charge.ToString();
+        var endCharge = charge - 1;
+        chargeText.text = "Time change times: " + endCharge;
         if(charge > 0)
         {
             if(Input.GetKeyDown(KeyCode.LeftShift))
@@ -36,10 +37,12 @@ public class TimeChangeManager : MonoBehaviour
         }  
         if(charge >= 5)
         {
+            chargeText.text = "Time change times: " + 4;
             charge = 5;
         }
         if(charge <= 0)
         {
+            chargeText.text = "Time change times: " + 0;
             charge = 0;
             NormalTime();
             timeVisuals.SetActive(false);

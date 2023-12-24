@@ -14,6 +14,7 @@ public class DialogueSystem : MonoBehaviour
     private int index; //to count slides
     public bool isOnAllLvlDialog;
     public string nextScene;
+    public GameObject fadeOut;
 
     private void Start()
     {
@@ -59,14 +60,15 @@ public class DialogueSystem : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
-            //if(isOnAllLvlDialog)
-            //{
-                //Invoke("LoadScene", 2f);
-            //}
+            if(isOnAllLvlDialog)
+            {
+                fadeOut.SetActive(true);
+                Invoke("LoadScene", 1f);
+            }
         }
     }
-    //private void LoadScene()
-    //{
-        //SceneManager.LoadScene(nextScene);
-    //
+    private void LoadScene()
+    {
+        SceneManager.LoadScene(nextScene);
+    }
 }
