@@ -9,11 +9,14 @@ public class Player : MonoBehaviour
     public float speed;
     public float jumpForce;
     private float moveInput;
-    
+    private bool facingRight;
+
+    DialogueSystem dS;
     private void Start()
     {
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
+        dS = GetComponent<DialogueSystem>();
     }
 
     private void Update()
@@ -28,6 +31,15 @@ public class Player : MonoBehaviour
             }
         }
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+
+        if(facingRight == false && moveInput < 0) //rotate left
+        {
+            Flip();
+        }
+        if (facingRight == true && moveInput > 0) //rotate right
+        {
+            Flip();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,5 +48,13 @@ public class Player : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
+
+    void Flip() //rotate at move
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
     }
 }
