@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,8 +12,10 @@ public class Player : MonoBehaviour
     public float jumpForce;
     private float moveInput;
     private bool facingRight;
-
+    public string thisScene;
+    public GameObject fade;
     DialogueSystem dS;
+
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -47,6 +51,19 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            jumpForce = 5;
+        }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            jumpForce = 6.5f;
+            isGrounded = true;
+        }
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Invoke("SceneLoad", 1f);
+            fade.SetActive(true);
+            speed = 0;
+            jumpForce = 0;
         }
     }
 
@@ -56,5 +73,9 @@ public class Player : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+    }
+    void SceneLoad()
+    {
+        SceneManager.LoadScene(thisScene);
     }
 }
