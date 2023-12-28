@@ -15,6 +15,7 @@ public class DialogueSystem : MonoBehaviour
     public bool isOnAllLvlDialog;
     public string nextScene;
     public GameObject fadeOut;
+    public AudioSource source;
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class DialogueSystem : MonoBehaviour
         {
             dialogueText.text += c;
             yield return new WaitForSeconds(speedText); // returns text
+            source.Play();
         }
     }
 
@@ -41,6 +43,7 @@ public class DialogueSystem : MonoBehaviour
         if (dialogueText.text == lines[index])
         {
             NextLine();
+            source.Stop();
         }
         else
         {
@@ -59,6 +62,7 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
+            source.Stop();
             gameObject.SetActive(false);
             if(isOnAllLvlDialog)
             {
