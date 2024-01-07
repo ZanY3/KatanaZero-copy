@@ -14,7 +14,10 @@ public class Player : MonoBehaviour
     private bool facingRight;
     public string thisScene;
     public GameObject fade;
+    public Animator animator;
     DialogueSystem dS;
+    public AudioSource source;
+    public AudioClip jumpSound;
 
     private void Start()
     {
@@ -30,6 +33,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                source.PlayOneShot(jumpSound);
+                //animator.Play("jump");
                 rb.velocity += Vector2.up * jumpForce;
                 isGrounded = false;
             }

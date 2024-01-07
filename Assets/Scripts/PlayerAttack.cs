@@ -12,12 +12,16 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange;
     public int damage;
     public Animator anim;
+    public AudioSource source;
+    public AudioClip swordSwing;
+
     private void Update()
     {
         if (timeBtwAttack <= 0)
         {
             if (Input.GetMouseButton(0))
             {
+                source.PlayOneShot(swordSwing);
                 anim.SetTrigger("attack");
                 Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
                 //finds all enemies within attack radius

@@ -11,11 +11,8 @@ public class TimeChangeManager : MonoBehaviour
     public int charge;
     public TMP_Text chargeText;
     public bool isSlow;
+    public Player player;
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
     private void Update()
     {
         var endCharge = charge - 1;
@@ -24,12 +21,15 @@ public class TimeChangeManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.LeftShift))
             {
+                player.source.pitch = 0.4f;
                 timeVisuals.SetActive(true);
                 SlowMotion();
+                
                 charge -= 1;
             }
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
+                player.source.pitch = 1;
                 timeVisuals.SetActive(false);
                 NormalTime();
             }
