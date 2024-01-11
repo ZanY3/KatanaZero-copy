@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float speed;
     public float jumpForce;
     private float moveInput;
-    private bool facingRight;
+    public bool facingRight = true;
     public string thisScene;
     public GameObject fade;
     public Animator animator;
@@ -29,6 +29,15 @@ public class Player : MonoBehaviour
     private void Update()
     {
         moveInput = Input.GetAxis("Horizontal");
+        if(facingRight == false && moveInput > 0)
+        {
+            Flip();
+        }
+        else if (facingRight == true && moveInput < 0) 
+        {   
+            Flip();
+        }
+        
         if (isGrounded == true)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -41,14 +50,6 @@ public class Player : MonoBehaviour
         }
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
-        if(facingRight == false && moveInput < 0) //rotate left
-        {
-            Flip();
-        }
-        if (facingRight == true && moveInput > 0) //rotate right
-        {
-            Flip();
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -72,13 +73,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    
     void Flip() //rotate at move
     {
         facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
+    
     void SceneLoad()
     {
         SceneManager.LoadScene(thisScene);
