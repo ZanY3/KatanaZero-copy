@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public int health;
     public AudioSource source;
     public AudioClip dieClip;
+    ItemHold itemHold;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -24,10 +26,27 @@ public class Enemy : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Pickble"))
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+            if(speed > 0)
+            {
+                speed = - speed;
+            }
+
+        }
+        if(collision.gameObject.CompareTag("LeftWallForEnemy"))
+        {
+            if (speed < 0)
+            {
+                speed = 3;
+            }
+
+        }
+        if (collision.gameObject.CompareTag("Pickble"))
         {
             TakeDamage(1);
         }
+    
     }
     public void TakeDamage(int damage)
     {

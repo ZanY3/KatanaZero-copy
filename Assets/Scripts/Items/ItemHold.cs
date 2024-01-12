@@ -10,6 +10,7 @@ public class ItemHold : MonoBehaviour
     public Transform holdPoint;
     public float throwItem;
 
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))
