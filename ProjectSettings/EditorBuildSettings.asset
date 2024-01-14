@@ -12,6 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/AfterAfter.unity
+    guid: 657a4ceb05d46b341ba02996acfb7e4e
+  - enabled: 1
+    path: Assets/Scenes/After1Day.unity
+    guid: aee375fb53b55c44599508f03847120d
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 18e9ddc161a6e84498d50060e537e322
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 8fb7eeea7f1ea014c9478809172d233c
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: a58d0ddd0f445624f9c507d7bed104d0
   m_configObjects: {}
