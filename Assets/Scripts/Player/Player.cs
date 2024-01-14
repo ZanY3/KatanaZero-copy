@@ -59,11 +59,6 @@ public class Player : MonoBehaviour
             isGrounded = true;
             jumpForce = 5;
         }
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            jumpForce = 6.5f;
-            isGrounded = true;
-        }
         if(collision.gameObject.CompareTag("Enemy"))
         {
             Invoke("SceneLoad", 1f);
