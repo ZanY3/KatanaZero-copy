@@ -16,6 +16,9 @@ public class DialogueSystem : MonoBehaviour
     public string nextScene;
     public GameObject fadeOut;
     public AudioSource source;
+    public AudioClip BobWhoahSound;
+    public bool isBoss;
+    public GameObject Boss;
 
     private void Start()
     {
@@ -66,6 +69,11 @@ public class DialogueSystem : MonoBehaviour
             gameObject.SetActive(false);
             if(isOnAllLvlDialog)
             {
+                if(isBoss)
+                {
+                    Boss.gameObject.SetActive(false);
+                    source.PlayOneShot(BobWhoahSound);
+                }
                 fadeOut.SetActive(true);
                 Invoke("LoadScene", 1f);
             }
