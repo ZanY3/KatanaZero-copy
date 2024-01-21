@@ -2698,7 +2698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462054f17deb32e469d5b48d2f963583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TpSceneName: Menu
+  TpSceneName: BossFight
   fade: {fileID: 1165843844}
 --- !u!61 &1632167175
 BoxCollider2D:
