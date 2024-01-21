@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
     public float speed = 20;
+    Boss boss;
+    
 
     void Start()
     {
+        boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
         Destroy(gameObject, 4f);
     }
 
@@ -26,6 +27,12 @@ public class Bullet : MonoBehaviour
             SceneManager.LoadScene("BossFight");
             
         }
+        
+    }
+    public void GiveDamage(int damage)
+    {
+        boss.TakeDamage(damage);
+        Destroy(gameObject);
         
     }
 }

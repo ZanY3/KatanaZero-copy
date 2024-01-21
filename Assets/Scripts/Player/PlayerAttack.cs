@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -8,11 +6,13 @@ public class PlayerAttack : MonoBehaviour
     public float startTimeBtwAttack;
 
     public Transform attackPos;
+    public LayerMask Bullet;
     public LayerMask enemy; //enemyes layer, who will take damage.
     public float attackRange;
     public int damage;
     public Animator anim;
     public AudioSource source;
+    public AudioClip bulletR;
     public AudioClip swordSwing;
    
 
@@ -26,10 +26,17 @@ public class PlayerAttack : MonoBehaviour
                 anim.SetTrigger("attack");
                 Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
                 //finds all enemies within attack radius
+                Collider2D[] bullets = Physics2D.OverlapCircleAll(attackPos.position, attackRange, Bullet);
+
 
                 for (int i = 0; i < enemies.Length; i++)
                 {
                     enemies[i].GetComponent<Enemy>().TakeDamage(damage);
+                }
+                for (int i = 0; i < bullets.Length; i++)
+                {
+                    bullets[i].GetComponent<Bullet>().GiveDamage(damage);
+                    source.PlayOneShot(bulletR);
                 }
             }
             timeBtwAttack = startTimeBtwAttack;

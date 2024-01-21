@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -11,6 +9,8 @@ public class Boss : MonoBehaviour
     public float health;
     public AudioSource source;
     public AudioClip dieClip;
+    public GameObject flash;
+    public GameObject teleporter;
 
     private float timer;
 
@@ -18,6 +18,7 @@ public class Boss : MonoBehaviour
     {
         if(health <= 0)
         {
+            teleporter.SetActive(true);
             source.PlayOneShot(dieClip);
             Destroy(gameObject);
         }
@@ -53,8 +54,9 @@ public class Boss : MonoBehaviour
     {
         Instantiate(bullet, shootPoint.position, Quaternion.identity) ;
     }
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        health -= 1;
+        flash.SetActive(true);
+        health -= damage;
     }
 }

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,6 +25,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+    
         moveInput = Input.GetAxis("Horizontal");
         if(facingRight == false && moveInput > 0)
         {

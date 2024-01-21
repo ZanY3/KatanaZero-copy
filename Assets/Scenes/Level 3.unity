@@ -771,7 +771,7 @@ PrefabInstance:
     - target: {fileID: 8444125163827253718, guid: 5adfe837a7452b040bce9794d9a13d0c, type: 3}
       propertyPath: source
       value: 
-      objectReference: {fileID: 664020871}
+      objectReference: {fileID: 507525485}
     - target: {fileID: 8444125163827253718, guid: 5adfe837a7452b040bce9794d9a13d0c, type: 3}
       propertyPath: thisScene
       value: Level 2
@@ -1471,11 +1471,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!82 &664020871 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5837885947823849281, guid: 5adfe837a7452b040bce9794d9a13d0c, type: 3}
-  m_PrefabInstance: {fileID: 252394359}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &685406272
 GameObject:
   m_ObjectHideFlags: 0
